@@ -23,6 +23,7 @@
 		CF2024C22C021F790079D690 /* URLImage in Frameworks */ = {isa = PBXBuildFile; productRef = CF2024C12C021F790079D690 /* URLImage */; };
 		CF2024C42C021F790079D690 /* URLImageStore in Frameworks */ = {isa = PBXBuildFile; productRef = CF2024C32C021F790079D690 /* URLImageStore */; };
 		CF2024C62C021F990079D690 /* ArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2024C52C021F990079D690 /* ArticleView.swift */; };
+		CF2024C82C022C9F0079D690 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF2024C72C022C9F0079D690 /* ErrorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		CF2024BB2C02189D0079D690 /* ResultState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultState.swift; sourceTree = "<group>"; };
 		CF2024BE2C02193B0079D690 /* NewsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewModel.swift; sourceTree = "<group>"; };
 		CF2024C52C021F990079D690 /* ArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleView.swift; sourceTree = "<group>"; };
+		CF2024C72C022C9F0079D690 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +158,7 @@
 			children = (
 				CF2024AC2C0205870079D690 /* HomeView.swift */,
 				CF2024C52C021F990079D690 /* ArticleView.swift */,
+				CF2024C72C022C9F0079D690 /* ErrorView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 				CF2024AD2C0205870079D690 /* HomeView.swift in Sources */,
 				CF2024822C0205050079D690 /* NewsAppApp.swift in Sources */,
 				CF2024B02C0207AE0079D690 /* NewsResponse.swift in Sources */,
+				CF2024C82C022C9F0079D690 /* ErrorView.swift in Sources */,
 				CF2024B62C020DFE0079D690 /* APIError.swift in Sources */,
 				CF2024B32C020C900079D690 /* NewsEndpoint.swift in Sources */,
 				CF2024C62C021F990079D690 /* ArticleView.swift in Sources */,
