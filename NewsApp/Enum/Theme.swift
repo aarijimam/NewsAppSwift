@@ -5,4 +5,8 @@
 //  Created by Aarij Imam on 26/05/2024.
 //
 
-import Foundation
+import SwiftUI
+
+enum Theme{
+    static let textColor = Color("TextColor")
+}

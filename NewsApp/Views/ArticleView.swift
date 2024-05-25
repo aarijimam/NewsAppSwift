@@ -41,19 +41,22 @@ struct ArticleView: View {
             
             VStack(alignment: .leading, spacing: 4){
                 Text(article.title ?? "")
-                    .foregroundColor(.black)
-                    .font(.system(size:18, weight: .semibold))
-                HStack{
+                    .foregroundColor(Theme.textColor)
+                    .font(.system(size:16, weight: .semibold))
+                    .lineLimit(3)
                     Text(article.source ?? "N/A")
                         .foregroundColor(.gray)
-                        .font(.footnote)
-                    Spacer()
-                    Text(article.date ?? Date(), style: .date)
-                        .foregroundStyle(.gray)
-                        .font(.footnote)
-                        .padding(.horizontal)
-                        .lineLimit(1)
-                }
+                        .font(.system(size: 12, weight: .regular))
+                    if let date = article.date{
+                        HStack{
+                            Text(date, style: .date)
+                                .font(.system(size: 12, weight: .bold))
+                            Text(date, style: .time)
+                        }.foregroundStyle(.gray)
+                            .font(.footnote)
+                            .lineLimit(1)
+                    }
+                    
             }
         }
     }
