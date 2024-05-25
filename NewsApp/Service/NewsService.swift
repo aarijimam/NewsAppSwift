@@ -14,14 +14,18 @@ protocol NewsService{
     //anypublisher subscribea and listen to object
     //first definition is success and second is error
     //Any publisher is very similar to result? -difference is with anypublisher you are subscribing to what it is listening
-    func request(from endpoint: NewsAPI) -> AnyPublisher<NewsResponse,APIError>
-    
+    func request(from endpoint: ArticleAPI) -> AnyPublisher<ArticleResponse,APIError>
+
 }
 
 //Implementation of newsservice
 //Using struct to make it lightweight
 struct NewsServiceImpl: NewsService{
-    func request(from endpoint: NewsAPI) -> AnyPublisher<NewsResponse,APIError>{
+    func request(from endpoint: ArticleAPI) -> AnyPublisher<ArticleResponse,APIError>{
+        //create json decoder and set datedecodingstrategy because api gives date in string
+        let jsonDecoder = JSONDecoder()
+        jsonDecoder.dateDecodingStrategy = .iso8601
+        
         //used to send APICall in iosDevelopment
         return URLSession
             //access the singleton that urlsession offers
@@ -33,20 +37,16 @@ struct NewsServiceImpl: NewsService{
             //map error to unknown error in apierror enum
             .mapError{ _ in APIError.unknown}
             //flatten everything to data an response (flatmap returns publisher)
-            .flatMap{data, response -> AnyPublisher<NewsResponse,APIError> in
+            .flatMap{data, response -> AnyPublisher<ArticleResponse,APIError> in
                 //fail if no response
                 guard let response = response as? HTTPURLResponse else{
                     return Fail(error: APIError.unknown).eraseToAnyPublisher()
                 }
                 //check if response code is decodable
                 if (200...299).contains(response.statusCode){
-                    //create json decoder and set datedecodingstrategy because api gives date in string
-                    let jsonDecoder = JSONDecoder()
-                    jsonDecoder.dateDecodingStrategy = .iso8601
-
                     return Just(data)
                         //decode using our decoder
-                        .decode(type: NewsResponse.self, decoder: jsonDecoder)
+                        .decode(type: ArticleResponse.self, decoder: jsonDecoder)
                         //error if decoding fail
                         .mapError{ _ in APIError.decodingError}
                         .eraseToAnyPublisher()
@@ -56,6 +56,6 @@ struct NewsServiceImpl: NewsService{
             }
             //convert that we send back to a generic publisher
             .eraseToAnyPublisher()
-        
+
     }
 }

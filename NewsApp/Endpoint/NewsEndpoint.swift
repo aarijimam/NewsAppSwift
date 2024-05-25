@@ -13,11 +13,11 @@ protocol APIBuilder{
     var path: String{get}
 }
 
-enum NewsAPI {
+enum ArticleAPI {
     case getNews
 }
 
-extension NewsAPI:APIBuilder{
+extension ArticleAPI:APIBuilder{
     var urlRequest: URLRequest {
         return URLRequest(url: self.baseURL.appendingPathComponent((self.path)))
     }

@@ -43,9 +43,17 @@ struct ArticleView: View {
                 Text(article.title ?? "")
                     .foregroundColor(.black)
                     .font(.system(size:18, weight: .semibold))
-                Text(article.source ?? "N/A")
-                    .foregroundColor(.gray)
-                    .font(.footnote)
+                HStack{
+                    Text(article.source ?? "N/A")
+                        .foregroundColor(.gray)
+                        .font(.footnote)
+                    Spacer()
+                    Text(article.date ?? Date(), style: .date)
+                        .foregroundStyle(.gray)
+                        .font(.footnote)
+                        .padding(.horizontal)
+                        .lineLimit(1)
+                }
             }
         }
     }
