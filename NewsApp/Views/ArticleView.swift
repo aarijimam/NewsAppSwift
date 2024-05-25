@@ -1,0 +1,19 @@
+//
+//  ArticleView.swift
+//  NewsApp
+//
+//  Created by Aarij Imam on 25/05/2024.
+//
+
+import SwiftUI
+import URLImage
+
+struct ArticleView: View {
+    var body: some View {
+        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+    }
+}
+
+#Preview {
+    ArticleView()
+}
