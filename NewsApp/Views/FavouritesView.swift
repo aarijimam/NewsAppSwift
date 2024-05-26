@@ -12,22 +12,27 @@ struct FavouritesView: View {
     @Environment(\.openURL) var openUrl
     //@ObservedObject var viewModel = FavouritesViewModelImpl()
     @ObservedObject var viewModel = FavouritesViewModelImpl.shared
-    
+     
     
     
     
     var body: some View {
-        NavigationView{
-            Group{
-                List(viewModel.articles){item in
-                    FavouriteArticleView(article: item)
-                        .onTapGesture {
-                            load(url: item.url)
-                        }
-                }
-                .navigationTitle(Text("Favourites"))
+        VStack{
+            Button("Delete Table"){
+                DBManagerImpl.deleteTable()
             }
-        }.onAppear(perform: viewModel.getFavourites)
+            NavigationView{
+                Group{
+                    List(viewModel.articles){item in
+                        FavouriteArticleView(article: item)
+                            .onTapGesture {
+                                load(url: item.url)
+                            }
+                    }
+                    .navigationTitle(Text("Favourites"))
+                }
+            }.onAppear(perform: viewModel.getFavourites)
+        }
     }
     
     

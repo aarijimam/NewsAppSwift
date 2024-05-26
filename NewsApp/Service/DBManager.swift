@@ -32,9 +32,9 @@ class DBManagerImpl: DBManager,ObservableObject{
     //var createFavouritesTableString = ""
     static let createFavouritesTableString = """
     CREATE TABLE Article (
-        id VARCHAR(255) PRIMARY KEY,
+        id VARCHAR(255),
         author VARCHAR(255),
-        url VARCHAR(255),
+        url VARCHAR(255) PRIMARY KEY,
         source VARCHAR(255),
         title VARCHAR(255),
         description TEXT,

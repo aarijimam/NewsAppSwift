@@ -13,8 +13,7 @@ struct ArticleResponse: Codable {
 
 struct Article: Codable, Identifiable {
     
-    init(id: UUID? = UUID(), author: String? = nil, url: String? = nil, source: String? = nil, title: String? = nil, description: String? = nil, image: String? = nil, date: Date? = nil) {
-        self.id = id!
+     init(author: String? = nil, url: String? = nil, source: String? = nil, title: String? = nil, description: String? = nil, image: String? = nil, date: Date? = nil) {
         self.author = author
         self.url = url
         self.source = source
