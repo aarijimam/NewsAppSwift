@@ -13,7 +13,9 @@ struct SettingsView: View {
     
     @Binding var darkModeEnabled: Bool
     @Binding var systemThemeEnabled: Bool
-    //@Binding var currentShowingView: String
+    @Binding var currentShowingView: String
+    @Binding var userID: String
+    @Binding var passwordID: String
     
     let themeManager: ThemeManager
     
@@ -48,24 +50,25 @@ struct SettingsView: View {
                 }
                 
                 Section(footer: Text("Made by Nawab Aarij Imam, Muhammad Ali, Abdullah Ihsan")){
-                                    Link(destination: URL(string: "https://github.com/aarijimam")!, label: {
-                                        Label("Follow me on github @aarijimam",
-                                              systemImage: "link").font(.system(size:16,weight: .bold))
-                                            .foregroundColor(Theme.textColor)
-                                    })
-                                    Label("DB Project",systemImage: "externaldrive.fill").font(.system(size:16,weight: .bold))
+                    Link(destination: URL(string: "https://github.com/aarijimam")!, label: {
+                        Label("Follow me on github @aarijimam",
+                              systemImage: "link").font(.system(size:16,weight: .bold))
+                            .foregroundColor(Theme.textColor)
+                    })
+                    Label("DB Project",systemImage: "externaldrive.fill").font(.system(size:16,weight: .bold))
                         .foregroundColor(Theme.textColor)
-                                }
+                }
                 
                 Section(){
-                                    Link(destination: URL(string: "https://github.com/aarijimam")!, label: {
-                                        Label("Follow me on github @aarijimam",
-                                              systemImage: "link").font(.system(size:16,weight: .bold))
-                                            .foregroundColor(Theme.textColor)
-                                    })
-                                    Label("DB Project",systemImage: "externaldrive.fill").font(.system(size:16,weight: .bold))
-                        .foregroundColor(Theme.textColor)
-                                }
+                    Button("Sign Out"){
+                        userID = "NULL"
+                        passwordID = "NULL"
+                        currentShowingView = "login"
+                    }.foregroundStyle(Theme.textColor)
+                        .font(.system(size:16,weight: .bold))
+                        .multilineTextAlignment(.center)
+                        
+                }
                 
                 
             }
@@ -74,13 +77,13 @@ struct SettingsView: View {
     }
 }
 
-struct SettingsView_Previews: PreviewProvider {
-    static var previews: some View {
-        SettingsView(darkModeEnabled: .constant(false),
-                     systemThemeEnabled: .constant(false),
-                     themeManager: ThemeManager())
-    }
-}
+//struct SettingsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SettingsView(darkModeEnabled: .constant(false),
+//                     systemThemeEnabled: .constant(false),
+//                     themeManager: ThemeManager())
+//    }
+//}
 
 class ThemeManager {
     

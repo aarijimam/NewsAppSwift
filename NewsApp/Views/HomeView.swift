@@ -10,9 +10,12 @@ import SwiftUI
 struct HomeView: View {
     @AppStorage("darkModeEnabled") private var darkModeEnabled = false
     @AppStorage("systemThemeEnabled") private var systemThemeEnabled = false
-    @AppStorage("User") private var user_:String = UUID().uuidString
-    
+    @AppStorage("User") private var user_:String = "NULL"
     @Binding var currentShowingView: String
+    @Binding var userID: String
+    @Binding var passwordID: String
+    
+    
 
     
     private let themeManager = ThemeManager()
@@ -30,7 +33,7 @@ struct HomeView: View {
                     Text("Favourites")
                 }
             SettingsView(darkModeEnabled: $darkModeEnabled, systemThemeEnabled: $systemThemeEnabled,
-                         themeManager: themeManager)
+                         currentShowingView: $currentShowingView,userID: $userID,passwordID: $passwordID,themeManager: themeManager)
             .tabItem{
                 Image(systemName: "gearshape")
                 Text("Settings")

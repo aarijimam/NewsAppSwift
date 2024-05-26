@@ -12,29 +12,30 @@ struct FavouritesView: View {
     @Environment(\.openURL) var openUrl
     //@ObservedObject var viewModel = FavouritesViewModelImpl()
     @ObservedObject var viewModel = FavouritesViewModelImpl.shared
-     
+    
     
     
     
     var body: some View {
-        VStack{
-            Button("Delete Table"){
-                DBManagerImpl.deleteTable(table:"Article")
-                DBManagerImpl.deleteTable(table:"FavoriteArticle")
-            }
-            NavigationView{
-                Group{
-                    List(viewModel.articles){item in
-                        FavouriteArticleView(article: item)
-                            .onTapGesture {
-                                load(url: item.url)
-                            }
-                    }
-                    .navigationTitle(Text("Favourites"))
+        //        VStack{
+        //            Button("Delete Table"){
+        //                DBManagerImpl.deleteTable(table:"Article")
+        //                DBManagerImpl.deleteTable(table:"FavoriteArticle")
+        //                DBManagerImpl.deleteTable(table:"User")
+        //            }
+        NavigationView{
+            Group{
+                List(viewModel.articles){item in
+                    FavouriteArticleView(article: item)
+                        .onTapGesture {
+                            load(url: item.url)
+                        }
                 }
-            }.onAppear(perform: viewModel.getFavourites)
-        }
+                .navigationTitle(Text("Favourites"))
+            }
+        }.onAppear(perform: viewModel.getFavourites)
     }
+    //}
     
     
     func load(url: String?){

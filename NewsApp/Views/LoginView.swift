@@ -9,12 +9,13 @@ import SwiftUI
 
 struct LoginView: View {
     @Binding var currentShowingView: String
-    @AppStorage("uid") var userID: String = ""
     
     
     @State private var email: String = ""
     @State private var password: String = ""
     
+    @Binding var userID: String
+    @Binding var passwordID: String
     @State private var showAlert = false
     @State private var alertMessage = ""
     
@@ -114,11 +115,17 @@ struct LoginView: View {
                 
                 Button {
                     if(DBManagerImpl.checkUser(username: email, password: password)){
-                        alertMessage = "Account Created!"
+                        alertMessage = "Logged In"
                         showAlert = true
+                        User.shared.id = UUID().uuidString
                         User.shared.username = email
+                        userID = email
                         User.shared.password = password
+                        passwordID = password
                         self.currentShowingView = "home"
+                    }else{
+                        alertMessage = "Incorrect Username or Password"
+                        showAlert = true
                     }
                 } label: {
                     Text("Sign In")
@@ -137,9 +144,19 @@ struct LoginView: View {
                 }
                 
                 
+            }.alert(isPresented: $showAlert) {
+                Alert(title: Text("Alert"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
             }
             
-        }
+        }.onAppear(perform: {
+            print(userID)
+            print(passwordID)
+            if(DBManagerImpl.checkUser(username: userID, password: passwordID)){
+                User.shared.username = userID
+                User.shared.password = passwordID
+                self.currentShowingView = "home"
+            }
+        })
     }
 }
 

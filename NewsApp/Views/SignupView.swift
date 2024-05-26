@@ -10,8 +10,9 @@ import SwiftUI
 struct SignupView: View {
     @State private var email: String = ""
     @State private var password: String = ""
-    @AppStorage("uid") var userID: String = ""
     @Binding var currentShowingView: String
+    @Binding var userID: String
+    @Binding var passwordID: String
     @State private var showAlert = false
     @State private var alertMessage = ""
     
@@ -112,10 +113,12 @@ struct SignupView: View {
                     if(DBManagerImpl.insert(user: User(username: email, password: password))){
                         alertMessage = "Account Created!"
                         showAlert = true
+                        User.shared.id = UUID().uuidString
+                        userID = email
+                        passwordID = password
                         User.shared.username = email
                         User.shared.password = password
                         self.currentShowingView = "home"
-                        
                         
                     }
                     
@@ -140,6 +143,15 @@ struct SignupView: View {
                 Alert(title: Text("Alert"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
             }
             
+        }.onAppear(perform: {
+            print(userID)
+            print(passwordID)
+            if(DBManagerImpl.checkUser(username: userID, password: passwordID)){
+                User.shared.username = userID
+                User.shared.password = passwordID
+                self.currentShowingView = "home"
+            }
+            })
         }
     }
-}
+

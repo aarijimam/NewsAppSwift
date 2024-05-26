@@ -26,6 +26,7 @@
 		CF552BF82C0396E200B309C0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF552BF72C0396E200B309C0 /* User.swift */; };
 		CF552BFA2C03A1CA00B309C0 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF552BF92C03A1CA00B309C0 /* LoginView.swift */; };
 		CF552BFC2C03A1D800B309C0 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF552BFB2C03A1D800B309C0 /* AuthView.swift */; };
+		CF552BFE2C03B56A00B309C0 /* UserKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF552BFD2C03B56A00B309C0 /* UserKeys.swift */; };
 		CFA8B0512C0254140040BCB8 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA8B0502C0254140040BCB8 /* ErrorView.swift */; };
 		CFA8B0532C02551A0040BCB8 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA8B0522C02551A0040BCB8 /* SettingsView.swift */; };
 		CFA8B0552C02552F0040BCB8 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA8B0542C02552F0040BCB8 /* FeedView.swift */; };
@@ -77,6 +78,7 @@
 		CF552BF72C0396E200B309C0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		CF552BF92C03A1CA00B309C0 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		CF552BFB2C03A1D800B309C0 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		CF552BFD2C03B56A00B309C0 /* UserKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserKeys.swift; sourceTree = "<group>"; };
 		CFA8B0502C0254140040BCB8 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		CFA8B0522C02551A0040BCB8 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		CFA8B0542C02552F0040BCB8 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 			isa = PBXGroup;
 			children = (
 				CFD05A8A2C027796003795CC /* Theme.swift */,
+				CF552BFD2C03B56A00B309C0 /* UserKeys.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -431,6 +434,7 @@
 				CF2024C62C021F990079D690 /* ArticleView.swift in Sources */,
 				CF2024BF2C02193B0079D690 /* NewsViewModel.swift in Sources */,
 				CFD8EF852C0379E60028EE1C /* FavouriteArticleView.swift in Sources */,
+				CF552BFE2C03B56A00B309C0 /* UserKeys.swift in Sources */,
 				CFD05A8D2C027B85003795CC /* FavouritesView.swift in Sources */,
 				CFA8B0532C02551A0040BCB8 /* SettingsView.swift in Sources */,
 				CF552BF82C0396E200B309C0 /* User.swift in Sources */,
