@@ -1,8 +1,8 @@
 //
 //  LoginView.swift
-//  SwiftUI-Auth
+//  NewsApp
 //
-//  Created by Derek Hsieh on 1/7/23.
+//  Created by Aarij Imam on 26/05/2024.
 //
 
 import SwiftUI
@@ -14,6 +14,9 @@ struct LoginView: View {
     
     @State private var email: String = ""
     @State private var password: String = ""
+    
+    @State private var showAlert = false
+    @State private var alertMessage = ""
     
     
     
@@ -110,7 +113,13 @@ struct LoginView: View {
                 
                 
                 Button {
-                    print("Auth")
+                    if(DBManagerImpl.checkUser(username: email, password: password)){
+                        alertMessage = "Account Created!"
+                        showAlert = true
+                        User.shared.username = email
+                        User.shared.password = password
+                        self.currentShowingView = "home"
+                    }
                 } label: {
                     Text("Sign In")
                         .foregroundColor(.white)

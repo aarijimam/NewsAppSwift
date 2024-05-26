@@ -29,7 +29,7 @@ class FavouritesViewModelImpl: ObservableObject,FavouritesViewModel{
     public static let shared = FavouritesViewModelImpl()  // <--- here
     
     func getFavourites(){
-        self.articles = DBManagerImpl.query(username: "dev")
+        self.articles = DBManagerImpl.query(username: User.shared.username)
         objectWillChange.send()
     }
     

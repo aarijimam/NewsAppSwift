@@ -10,7 +10,10 @@ import SwiftUI
 struct HomeView: View {
     @AppStorage("darkModeEnabled") private var darkModeEnabled = false
     @AppStorage("systemThemeEnabled") private var systemThemeEnabled = false
-    @StateObject var favouriteModel = DBManagerImpl()
+    @AppStorage("User") private var user_:String = UUID().uuidString
+    
+    @Binding var currentShowingView: String
+
     
     private let themeManager = ThemeManager()
     
@@ -36,6 +39,3 @@ struct HomeView: View {
     }
 }
 
-#Preview {
-    HomeView()
-}

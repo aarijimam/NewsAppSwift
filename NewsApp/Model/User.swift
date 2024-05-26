@@ -8,6 +8,9 @@
 import Foundation
 
 struct User {
-    let username: String
-    let password: String
+     var id: String = UUID().uuidString
+     var username: String = ""
+     var password: String = ""
+    
+    static public var shared = User()
 }

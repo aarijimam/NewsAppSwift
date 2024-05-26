@@ -13,6 +13,7 @@ struct SettingsView: View {
     
     @Binding var darkModeEnabled: Bool
     @Binding var systemThemeEnabled: Bool
+    //@Binding var currentShowingView: String
     
     let themeManager: ThemeManager
     
@@ -55,6 +56,17 @@ struct SettingsView: View {
                                     Label("DB Project",systemImage: "externaldrive.fill").font(.system(size:16,weight: .bold))
                         .foregroundColor(Theme.textColor)
                                 }
+                
+                Section(){
+                                    Link(destination: URL(string: "https://github.com/aarijimam")!, label: {
+                                        Label("Follow me on github @aarijimam",
+                                              systemImage: "link").font(.system(size:16,weight: .bold))
+                                            .foregroundColor(Theme.textColor)
+                                    })
+                                    Label("DB Project",systemImage: "externaldrive.fill").font(.system(size:16,weight: .bold))
+                        .foregroundColor(Theme.textColor)
+                                }
+                
                 
             }
             .navigationTitle("Settings")

@@ -212,11 +212,13 @@ class DBManagerImpl: DBManager,ObservableObject{
         INSERT INTO User(username, password) VALUES (?, ?);
         """
     
-    static func insert(user:User) {
+    static func insert(user:User) -> Bool {
         var insertStatement: OpaquePointer?
-        
+        var status: Bool = false
 
+        print(user)
         
+        print(insertUserStatementString)
         // Prepare the SQL statement
         if sqlite3_prepare_v2(DBManagerImpl.db, DBManagerImpl.insertUserStatementString, -1, &insertStatement, nil) == SQLITE_OK {
             
@@ -230,6 +232,7 @@ class DBManagerImpl: DBManager,ObservableObject{
             // Execute the insert statement
             if sqlite3_step(insertStatement) == SQLITE_DONE {
                 print("Successfully inserted row into User.")
+                status = true
             } else {
                 let errmsg = String(cString: sqlite3_errmsg(DBManagerImpl.db))
                 print("Failed to insert row into User: \(errmsg)")
@@ -241,6 +244,7 @@ class DBManagerImpl: DBManager,ObservableObject{
         
         // Finalize the statement
         sqlite3_finalize(insertStatement)
+        return status
     }
     
     static let checkUserPasswordStatementString = """

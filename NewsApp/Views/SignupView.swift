@@ -1,8 +1,8 @@
 //
-//  SignupView.swift
-//  SwiftUI-Auth
+//  SignUp.swift
+//  NewsApp
 //
-//  Created by Derek Hsieh on 1/7/23.
+//  Created by Aarij Imam on 26/05/2024.
 //
 
 import SwiftUI
@@ -12,6 +12,8 @@ struct SignupView: View {
     @State private var password: String = ""
     @AppStorage("uid") var userID: String = ""
     @Binding var currentShowingView: String
+    @State private var showAlert = false
+    @State private var alertMessage = ""
     
     private func isValidPassword(_ password: String) -> Bool {
         // minimum 6 characters long
@@ -107,7 +109,15 @@ struct SignupView: View {
                 
                 
                 Button {
-                    print("Already")
+                    if(DBManagerImpl.insert(user: User(username: email, password: password))){
+                        alertMessage = "Account Created!"
+                        showAlert = true
+                        User.shared.username = email
+                        User.shared.password = password
+                        self.currentShowingView = "home"
+                        
+                        
+                    }
                     
                 } label: {
                     Text("Create New Account")
@@ -126,10 +136,10 @@ struct SignupView: View {
                 }
                 
                 
+            }.alert(isPresented: $showAlert) {
+                Alert(title: Text("Alert"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
             }
             
         }
     }
 }
-
-
