@@ -2,7 +2,7 @@
 //  SettingsView.swift
 //  NewsAPI
 //
-//  Created by Tunde on 17/02/2021.
+//  Created by Aarij Imam on 25/05/2024.
 //
 
 import SwiftUI
