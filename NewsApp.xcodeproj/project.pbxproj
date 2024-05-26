@@ -28,6 +28,10 @@
 		CFA8B0552C02552F0040BCB8 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFA8B0542C02552F0040BCB8 /* FeedView.swift */; };
 		CFD05A8B2C027796003795CC /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD05A8A2C027796003795CC /* Theme.swift */; };
 		CFD05A8D2C027B85003795CC /* FavouritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD05A8C2C027B85003795CC /* FavouritesView.swift */; };
+		CFD8EF7E2C0333E60028EE1C /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD8EF7D2C0333E60028EE1C /* DBManager.swift */; };
+		CFD8EF812C0363160028EE1C /* FavouritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD8EF802C0363160028EE1C /* FavouritesViewModel.swift */; };
+		CFD8EF832C0363570028EE1C /* Favourites.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD8EF822C0363570028EE1C /* Favourites.swift */; };
+		CFD8EF852C0379E60028EE1C /* FavouriteArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFD8EF842C0379E60028EE1C /* FavouriteArticleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +74,10 @@
 		CFA8B0542C02552F0040BCB8 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		CFD05A8A2C027796003795CC /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		CFD05A8C2C027B85003795CC /* FavouritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesView.swift; sourceTree = "<group>"; };
+		CFD8EF7D2C0333E60028EE1C /* DBManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
+		CFD8EF802C0363160028EE1C /* FavouritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesViewModel.swift; sourceTree = "<group>"; };
+		CFD8EF822C0363570028EE1C /* Favourites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favourites.swift; sourceTree = "<group>"; };
+		CFD8EF842C0379E60028EE1C /* FavouriteArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteArticleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +180,7 @@
 				CFA8B0522C02551A0040BCB8 /* SettingsView.swift */,
 				CFA8B0542C02552F0040BCB8 /* FeedView.swift */,
 				CFD05A8C2C027B85003795CC /* FavouritesView.swift */,
+				CFD8EF842C0379E60028EE1C /* FavouriteArticleView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -180,6 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				CF2024AF2C0207AE0079D690 /* NewsResponse.swift */,
+				CFD8EF822C0363570028EE1C /* Favourites.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -204,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				CF2024B82C020F330079D690 /* NewsService.swift */,
+				CFD8EF7D2C0333E60028EE1C /* DBManager.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -220,6 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				CF2024BE2C02193B0079D690 /* NewsViewModel.swift */,
+				CFD8EF802C0363160028EE1C /* FavouritesViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -384,10 +396,14 @@
 				CFA8B0552C02552F0040BCB8 /* FeedView.swift in Sources */,
 				CF2024B02C0207AE0079D690 /* NewsResponse.swift in Sources */,
 				CFA8B0512C0254140040BCB8 /* ErrorView.swift in Sources */,
+				CFD8EF812C0363160028EE1C /* FavouritesViewModel.swift in Sources */,
+				CFD8EF832C0363570028EE1C /* Favourites.swift in Sources */,
 				CF2024B62C020DFE0079D690 /* APIError.swift in Sources */,
 				CF2024B32C020C900079D690 /* NewsEndpoint.swift in Sources */,
+				CFD8EF7E2C0333E60028EE1C /* DBManager.swift in Sources */,
 				CF2024C62C021F990079D690 /* ArticleView.swift in Sources */,
 				CF2024BF2C02193B0079D690 /* NewsViewModel.swift in Sources */,
+				CFD8EF852C0379E60028EE1C /* FavouriteArticleView.swift in Sources */,
 				CFD05A8D2C027B85003795CC /* FavouritesView.swift in Sources */,
 				CFA8B0532C02551A0040BCB8 /* SettingsView.swift in Sources */,
 			);

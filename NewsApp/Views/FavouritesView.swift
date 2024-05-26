@@ -8,10 +8,37 @@
 import SwiftUI
 
 struct FavouritesView: View {
+    //Access system capability to open up links
+    @Environment(\.openURL) var openUrl
+    //@ObservedObject var viewModel = FavouritesViewModelImpl()
+    @ObservedObject var viewModel = FavouritesViewModelImpl.shared
+    
+    
+    
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView{
+            Group{
+                List(viewModel.articles){item in
+                    FavouriteArticleView(article: item)
+                        .onTapGesture {
+                            load(url: item.url)
+                        }
+                }
+                .navigationTitle(Text("Favourites"))
+            }
+        }.onAppear(perform: viewModel.getFavourites)
+    }
+    
+    
+    func load(url: String?){
+        guard let link = url,
+              let url = URL(string: link) else {return}
+        
+        openUrl(url)
     }
 }
+
 
 #Preview {
     FavouritesView()

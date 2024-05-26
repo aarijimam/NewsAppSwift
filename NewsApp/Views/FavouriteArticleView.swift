@@ -9,7 +9,7 @@ import SwiftUI
 //used to cache images //third party dependency
 import URLImage
 
-struct ArticleView: View {
+struct FavouriteArticleView: View {
     
     let article: Article
     @State var showMenu: Bool = false
@@ -62,12 +62,9 @@ struct ArticleView: View {
                 }
             }
             .swipeActions {
-                Button("", systemImage: "heart", action:{
-                    showMenu.toggle()
-                    DBManagerImpl.insert(data: article)
+                Button("", systemImage: "trash",role: .destructive, action: {
+                    DBManagerImpl.deleteFavourite(url: (article.url ?? ""))
                     FavouritesViewModelImpl.shared.getFavourites()
-                }).tint(Color(hue: 0.83, saturation: 0.458, brightness: 1.0))
-                Button("", systemImage: "trash", role: .destructive, action: {
                     print ("Delete")
                 })
                 
@@ -76,64 +73,6 @@ struct ArticleView: View {
         }
     }
     
-    struct PlaceholderImageView:View{
-        var body: some View{
-            Image(systemName: "photo.fill")
-                .foregroundColor(.white)
-                .background(Color.gray)
-                .frame(width:100, height: 100)
-        }
-    }
-    
-    struct SwipeActionsView: View {
-        @State var showMenu: Bool = false
-        var body: some View {
-            List {
-                Text("Swipe action test")
-                
-                    .swipeActions {
-                        Button {
-                            showMenu.toggle()
-                        }label: {
-                            Text("Menu")
-                        }
-                        
-                        Button("", systemImage: "trash", role: .destructive, action: {
-                            print ("Delete")
-                        })
-                        
-                        Button {
-                            print("Sup")
-                        }label: {
-                            Image(systemName: "checkmark")
-                        }
-                        .tint(.green)
-                        
-                    }
-            }
-            .confirmationDialog("Menu of options",
-                                isPresented: $showMenu,
-                                titleVisibility: .visible) {
-                Button {
-                    print("menu one")
-                }label: {
-                    Text("Menu one")
-                }
-                Button {
-                    print("menu two")
-                }label: {
-                    Text("Menu two")
-                }
-                Button {
-                    print("menu three")
-                }label: {
-                    Text("Menu three")
-                }
-            }
-            
-        }
-    }
-
 
 
 #Preview {

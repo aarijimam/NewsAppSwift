@@ -18,7 +18,7 @@ class NewsViewModelImpl: ObservableObject,NewsViewModel{
     //inject news service into our class
     private let service: NewsService
     
-    //protect it from within the case but access it from outside using private(set)
+    //protect it from within the class but access it from outside using private(set)
     private(set) var articles = [Article]()
     
     //when you call service you want to keep it in memory, so collection to hold requests
