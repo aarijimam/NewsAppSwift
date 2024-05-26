@@ -19,7 +19,8 @@ struct FavouritesView: View {
     var body: some View {
         VStack{
             Button("Delete Table"){
-                DBManagerImpl.deleteTable()
+                DBManagerImpl.deleteTable(table:"Article")
+                DBManagerImpl.deleteTable(table:"FavoriteArticle")
             }
             NavigationView{
                 Group{
