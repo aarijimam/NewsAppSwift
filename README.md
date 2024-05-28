@@ -1,4 +1,4 @@
-# Native News App with SQLite Database Integration
+# Native SwiftUI News App with SQLite Database Integration
 
 This project is a Native News App developed in Swift and SwiftUI, following the MVVM and Singleton design patterns. The initial setup and basic functionalities were implemented following TundsDev's tutorial on YouTube, with additional features and enhancements added independently.
 
