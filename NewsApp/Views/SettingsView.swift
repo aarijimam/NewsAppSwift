@@ -49,7 +49,7 @@ struct SettingsView: View {
                     }
                 }
                 
-                Section(footer: Text("Made by Nawab Aarij Imam, Muhammad Ali, Abdullah Ihsan")){
+                Section(footer: Text("Made by Nawab Aarij Imam")){
                     Link(destination: URL(string: "https://github.com/aarijimam")!, label: {
                         Label("Follow me on github @aarijimam",
                               systemImage: "link").font(.system(size:16,weight: .bold))
