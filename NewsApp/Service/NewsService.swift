@@ -26,6 +26,7 @@ struct NewsServiceImpl: NewsService{
         let jsonDecoder = JSONDecoder()
         jsonDecoder.dateDecodingStrategy = .iso8601
         
+        print(endpoint.urlRequest)
         //used to send APICall in iosDevelopment
         return URLSession
             //access the singleton that urlsession offers

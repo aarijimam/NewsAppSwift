@@ -15,6 +15,7 @@ protocol APIBuilder{
 
 enum ArticleAPI {
     case getNews
+    case getFavourites
 }
 
 extension ArticleAPI:APIBuilder{
@@ -26,12 +27,16 @@ extension ArticleAPI:APIBuilder{
         switch self{
         case .getNews:
             return URL(string: "https://api.lil.software")!
+        case .getFavourites:
+            return URL(string: "http://127.0.0.1:3000")!
         }
     }
     
     var path: String {
         return "/news"
     }
+    
+    
     
     
 }

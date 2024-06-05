@@ -64,7 +64,7 @@ struct FavouriteArticleView: View {
             .swipeActions {
                 Button("", systemImage: "trash",role: .destructive, action: {
                     DBManagerImpl.deleteFavourite(url: (article.url ?? ""))
-                    FavouritesViewModelImpl.shared.getFavourites()
+                    //FavouritesViewModelImpl.getFavourites()
                     print ("Delete")
                 })
                 

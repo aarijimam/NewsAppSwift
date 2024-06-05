@@ -1,8 +1,8 @@
 //
-//  FavouritesView.swift
+//  FeedView.swift
 //  NewsApp
 //
-//  Created by Aarij Imam on 26/05/2024.
+//  Created by Aarij Imam on 25/05/2024.
 //
 
 import SwiftUI
@@ -10,33 +10,29 @@ import SwiftUI
 struct FavouritesView: View {
     //Access system capability to open up links
     @Environment(\.openURL) var openUrl
-    //@ObservedObject var viewModel = FavouritesViewModelImpl()
-    @ObservedObject var viewModel = FavouritesViewModelImpl.shared
-    
-    
-    
+    //Object is not lost when changing states maintains in memory
+    @StateObject var viewModel = FavouritesViewModelImpl(service: NewsServiceImpl())
     
     var body: some View {
-        //        VStack{
-        //            Button("Delete Table"){
-        //                DBManagerImpl.deleteTable(table:"Article")
-        //                DBManagerImpl.deleteTable(table:"FavoriteArticle")
-        //                DBManagerImpl.deleteTable(table:"User")
-        //            }
         NavigationView{
             Group{
-                List(viewModel.articles){item in
-                    FavouriteArticleView(article: item)
-                        .onTapGesture {
-                            load(url: item.url)
-                        }
+                switch(viewModel.state){
+                case .loading:
+                    ProgressView()
+                case .failed(error: let error):
+                    ErrorView(error: error, handler: viewModel.getArticles)
+                case .success(let articles):
+                    List(articles){item in
+                        ArticleView(article: item)
+                            .onTapGesture {
+                                load(url: item.url)
+                            }
+                    }
+                    .navigationTitle(Text("News"))
                 }
-                .navigationTitle(Text("Favourites"))
             }
-        }.onAppear(perform: viewModel.getFavourites)
+        }.onAppear(perform: viewModel.getArticles)
     }
-    //}
-    
     
     func load(url: String?){
         guard let link = url,
@@ -46,7 +42,6 @@ struct FavouritesView: View {
     }
 }
 
-
 #Preview {
-    FavouritesView()
+    FeedView()
 }

@@ -102,8 +102,6 @@ struct LoginView: View {
                     withAnimation {
                         self.currentShowingView = "signup"
                     }
-                    
-                    
                 }) {
                     Text("Don't have an account?")
                         .foregroundColor(.black.opacity(0.7))

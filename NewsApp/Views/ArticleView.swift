@@ -65,7 +65,7 @@ struct ArticleView: View {
                 Button("", systemImage: "heart", action:{
                     showMenu.toggle()
                     DBManagerImpl.insert(data: article,username: User.shared.username)
-                    FavouritesViewModelImpl.shared.getFavourites()
+                    //FavouritesViewModelImpl.shared.getFavourites()
                 }).tint(Color(hue: 0.83, saturation: 0.458, brightness: 1.0))
                 Button("", systemImage: "trash", role: .destructive, action: {
                     print ("Delete")
