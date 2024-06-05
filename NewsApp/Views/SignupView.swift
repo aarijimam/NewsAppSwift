@@ -120,6 +120,9 @@ struct SignupView: View {
                         User.shared.password = password
                         self.currentShowingView = "home"
                         
+                    }else{
+                        alertMessage = "User already exists!"
+                        showAlert = true
                     }
                     
                 } label: {

@@ -10,13 +10,13 @@ import SwiftUI
 struct HomeView: View {
     @AppStorage("darkModeEnabled") private var darkModeEnabled = false
     @AppStorage("systemThemeEnabled") private var systemThemeEnabled = false
-    @AppStorage("User") private var user_:String = "NULL"
+    //@AppStorage("User") private var user_:String = "NULL"
     @Binding var currentShowingView: String
     @Binding var userID: String
     @Binding var passwordID: String
     
     
-
+    
     
     private let themeManager = ThemeManager()
     

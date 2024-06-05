@@ -14,7 +14,6 @@ struct AuthView: View {
     @AppStorage("password") var passwordID: String = "null"
         
     var body: some View {
-
         if(currentViewShowing == "login") {
             LoginView(currentShowingView: $currentViewShowing,userID: $userID,passwordID: $passwordID)
                 .preferredColorScheme(.light)

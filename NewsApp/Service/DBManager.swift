@@ -23,6 +23,7 @@ private enum Database: String {
     case Articles
     
     var path: String? {
+        print(self.rawValue)
         return DBDirectoryUrl?.appendingPathComponent("\(self.rawValue).sqlite").relativePath
     }
 }
@@ -363,9 +364,9 @@ class DBManagerImpl: DBManager,ObservableObject{
             SQLITE_OK {
             // 3
             if sqlite3_step(deleteTableStatement) == SQLITE_DONE {
-                print("\nArticle table deleted.")
+                print("\n\(table) table deleted.")
             } else {
-                print("\nArticle table is not deleted.")
+                print("\n\(table) table is not deleted.")
             }
         } else {
             let errorMessage = String(cString: sqlite3_errmsg(DBManagerImpl.db))
@@ -390,6 +391,54 @@ DELETE FROM Article WHERE url = "\(url)";
                 print("\nFavourite deleted.")
             } else {
                 print("\nFavourite is not deleted.")
+            }
+        } else {
+            let errorMessage = String(cString: sqlite3_errmsg(DBManagerImpl.db))
+            print("\nQuery is not prepared \(errorMessage)")
+            print("\nDELETE Favourite statement is not prepared.")
+        }
+        // 4
+        sqlite3_finalize(deleteRowStatement)
+    }
+    
+    static  func deleteUserFavourite(url:String, user:String){
+        let queryStatement = """
+DELETE FROM FavoriteArticle WHERE ArticleUrl = "\(url)" AND Username = "\(user)";
+"""
+        let articleDelete = """
+DELETE FROM Article
+WHERE url = "\(url)" AND NOT EXISTS (
+        SELECT 1 FROM FavoriteArticle WHERE ArticleUrl = "\(url)"
+    );
+"""
+        // 1
+        var deleteRowStatement: OpaquePointer?
+        // 2
+        if sqlite3_prepare_v2(DBManagerImpl.db, queryStatement, -1, &deleteRowStatement, nil) ==
+            SQLITE_OK {
+            // 3
+            if sqlite3_step(deleteRowStatement) == SQLITE_DONE {
+                print("\nFavourite deleted.")
+            } else {
+                print("\nFavourite is not deleted.")
+            }
+        } else {
+            let errorMessage = String(cString: sqlite3_errmsg(DBManagerImpl.db))
+            print("\nQuery is not prepared \(errorMessage)")
+            print("\nDELETE Favourite statement is not prepared.")
+        }
+        // 4
+        sqlite3_finalize(deleteRowStatement)
+        
+        if sqlite3_prepare_v2(DBManagerImpl.db, articleDelete, -1, &deleteRowStatement, nil) ==
+            SQLITE_OK {
+            // 3
+            if sqlite3_step(deleteRowStatement) == SQLITE_DONE {
+                print("\nArticle deleted.")
+            } else {
+                let errorMessage = String(cString: sqlite3_errmsg(DBManagerImpl.db))
+                print("\n\(errorMessage)")
+                print("\nArticle is not deleted.")
             }
         } else {
             let errorMessage = String(cString: sqlite3_errmsg(DBManagerImpl.db))

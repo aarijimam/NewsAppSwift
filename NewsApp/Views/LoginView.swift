@@ -20,7 +20,6 @@ struct LoginView: View {
     @State private var alertMessage = ""
     
     
-    
     private func isValidPassword(_ password: String) -> Bool {
         // minimum 6 characters long
         // 1 uppercase character

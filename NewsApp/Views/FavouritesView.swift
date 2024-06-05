@@ -17,12 +17,14 @@ struct FavouritesView: View {
     
     
     var body: some View {
-        //        VStack{
-        //            Button("Delete Table"){
-        //                DBManagerImpl.deleteTable(table:"Article")
-        //                DBManagerImpl.deleteTable(table:"FavoriteArticle")
-        //                DBManagerImpl.deleteTable(table:"User")
-        //            }
+//        VStack{
+//            Button("Delete Table"){
+//                DBManagerImpl.deleteTable(table:"Article")
+//                DBManagerImpl.deleteTable(table:"FavoriteArticle")
+//                
+//            }
+//        }
+                    
         NavigationView{
             Group{
                 List(viewModel.articles){item in
@@ -34,6 +36,7 @@ struct FavouritesView: View {
                 .navigationTitle(Text("Favourites"))
             }
         }.onAppear(perform: viewModel.getFavourites)
+                        
     }
     //}
     
